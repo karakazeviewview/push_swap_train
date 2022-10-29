@@ -39,6 +39,7 @@ int ft_atoi(const char *str)
 	return ((int)total);
 }
 
+/*
 int ft_atoi(const char *str)
 {
 	int sign;

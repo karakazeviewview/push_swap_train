@@ -1,5 +1,5 @@
 #include "libft.h"
-#inlcude <libc.h>
+//#include <libc.h>
 
 size_t ft_strlen(const cahr *s)
 {

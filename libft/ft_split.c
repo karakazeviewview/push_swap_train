@@ -97,6 +97,7 @@ char **ft_split(char const *s, char c)
 	return (ptr);
 }
 
+/*
 #include "libft.h"
 static char **ft_free(char **ret)
 {

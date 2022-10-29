@@ -32,6 +32,7 @@ char ft_plusi(unsigned int i, char c)
 	return (i + c);
 }
 
+/*
 int main(void)
 {
 	printf("%s\n", ft_strmapi("abcdefg", ft_plusone));
@@ -40,3 +41,4 @@ int main(void)
 	printf("%s\n", ft_strmapi("", ft_plusi));
 	return (0);
 }
+*/

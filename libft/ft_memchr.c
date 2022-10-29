@@ -18,6 +18,7 @@ void *ft_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 
+/*
 int main(void)
 {
 	char str_1[100] = "0123456789"
@@ -27,3 +28,4 @@ int main(void)
 	printf("%s\t%s\n", ft_memchr(str_1, 'g', 5), memchr(str_1, 'g', 5));
 	return (0);
 }
+*/

@@ -6,14 +6,16 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:12:53 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:12:54 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 06:44:36 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-t_stack *ft_lstnew(int num)
+#include "push_swap.h"
+
+t_stack	*ft_lstnew(int num)
 {
-	t_stack *new;
+	t_stack	*new;
+
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);

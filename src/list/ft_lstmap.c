@@ -6,15 +6,16 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:12:48 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:12:49 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 06:44:31 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-t_stack *ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int))
+#include "push_swap.h"
+
+t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int))
 {
-	t_stack *tmp;
-	t_stack *newlist;
+	t_stack	*tmp;
+	t_stack	*newlist;
 
 	if (!lst || !f)
 		return (NULL);

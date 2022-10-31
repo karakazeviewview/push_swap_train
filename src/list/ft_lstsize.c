@@ -6,14 +6,16 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:13:00 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:13:01 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 06:44:42 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-int ft_lstsize(t_stack *lst)
+#include "push_swap.h"
+
+int	ft_lstsize(t_stack *lst)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (lst)
 	{

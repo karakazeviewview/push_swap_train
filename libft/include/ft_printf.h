@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 02:05:12 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:05:13 by mmatsuo          ###   ########.fr       */
+/*   Created: 2022/11/01 02:13:18 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 06:26:31 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define HEX_UPPER "0123456789ABCDEF"
 # define HEX_LOWER "0123456789abcdef"
 
-int			ft_printf(const char *format, ...);
-ssize_t		ft_put_char(char c);
-ssize_t		ft_put_str(char *str);
-ssize_t		ft_put_ptr(uintptr_t num);
+int		ft_printf(const char *format, ...);
+ssize_t	ft_put_char(char c);
+ssize_t	ft_put_str(char *str);
+ssize_t	ft_put_ptr(uintptr_t num);
 
 #endif

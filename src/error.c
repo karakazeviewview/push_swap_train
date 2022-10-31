@@ -5,30 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 02:17:14 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:17:15 by mmatsuo          ###   ########.fr       */
+/*   Created: 2022/11/01 05:37:21 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 06:47:41 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
-void error_argv(void)
+void	error_input_stack(t_stack *stack, size_t len, char **str, int argc)
 {
-	ft_printf("error argv\n");
+	size_t	i;
+	t_stack	*tmp;
+
+	i = 0;
+	while (i < len)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+		i++;
+	}
+	free_splited(str, argc);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
-void malloc_error(t_stack **stack)
+void	error_argv(char **str, long *num, int argc)
 {
-	t_stack *tmp;
-
-	while (stack && *stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = NULL;
-		*stack = tmp;
-	}
-	ft_printf("malloc_error\n");
+	free_splited(str, argc);
+	free(num);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

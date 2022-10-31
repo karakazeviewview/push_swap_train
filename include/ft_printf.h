@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfirst.c                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 02:12:31 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:12:32 by mmatsuo          ###   ########.fr       */
+/*   Created: 2022/11/01 02:13:18 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 05:46:09 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-t_stack	*ft_lstfirst(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->previous)
-		lst = lst->previous;
-	return (lst);
-}
+# include <limits.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <inttypes.h>
+# define DEC "0123456789"
+# define HEX_UPPER "0123456789ABCDEF"
+# define HEX_LOWER "0123456789abcdef"
+
+int		ft_printf(const char *format, ...);
+ssize_t	ft_put_char(char c);
+ssize_t	ft_put_str(char *str);
+ssize_t	ft_put_ptr(uintptr_t num);
+
+#endif

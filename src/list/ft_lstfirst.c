@@ -6,11 +6,11 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:12:31 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:12:32 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 06:44:20 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 t_stack	*ft_lstfirst(t_stack *lst)
 {

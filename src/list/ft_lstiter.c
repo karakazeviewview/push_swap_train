@@ -6,12 +6,13 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:12:36 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 02:12:37 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 06:44:25 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-void ft_lstiter(t_stack *lst, void (*f)(int))
+#include "push_swap.h"
+
+void	ft_lstiter(t_stack *lst, void (*f)(int))
 {
 	if (!lst || !f)
 		return ;

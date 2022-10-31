@@ -11,12 +11,6 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }	t_stack;
 
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	is_sorted()
-
-}
-
 void	error_input_stack(t_stack *stack, size_t len)
 {
 	size_t	i;
@@ -31,6 +25,16 @@ void	error_input_stack(t_stack *stack, size_t len)
 	}
 	return ;
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+
+// 	error_input_stack(*stack, len);
+// 	return (0);
+// }
+
 
 void	input_stack(t_stack **stack, char **str, int argc)
 {
@@ -51,6 +55,16 @@ void	input_stack(t_stack **stack, char **str, int argc)
 	return ;
 }
 
+// int main(int argc, char **argv)
+// {
+// 	t_stack **stack;
+// 	char **str;
+
+// 	t_stack *stack;
+// 	size_t len;
+// 	input_stack(**stack, **str, argc);
+// 	return (0);
+// }
 
 void	coordinate_compression(t_stack *stack)
 {
@@ -80,6 +94,14 @@ void	coordinate_compression(t_stack *stack)
 	}
 }
 
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+
+// 	coordinate_compression(t_stack *stack);
+// 	return (0);
+// }
+
 void	free_splited(char **str, int argc)
 {
 	if (argc == 2)
@@ -94,6 +116,17 @@ void	free_splited(char **str, int argc)
 	return ;
 }
 
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	char **str;
+
+// 	free_splited(**str, argc);
+// 	return (0);
+// }
+
+
 void	error_argv(char **str, long *num, int argc)
 {
 	free_splited(str, argc);
@@ -101,6 +134,17 @@ void	error_argv(char **str, long *num, int argc)
 	ft_putchar_fd("Error\n", 2);
 	exit(1);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	long *num;
+// 	char **str;
+
+// 	error_argv(**str, *num, argc);
+// 	return (0);
+// }
 
 bool	check_dup(long *num, size_t len)
 {
@@ -122,12 +166,32 @@ bool	check_dup(long *num, size_t len)
 	return (false);
 }
 
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	long *num;
+
+// 	check_dup(*num, len);
+// 	return (0);
+// }
+
 bool	check_isover_int(long num)
 {
 	if (num < INT_MIN || INT_MAX < num)
 		return (true);
 	return (false);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	lont num;
+
+// 	check_isover_int(num);
+// 	return (0);
+// }
 
 bool	check_isnum(char *str)
 {
@@ -144,6 +208,16 @@ bool	check_isnum(char *str)
 	return (true);
 }
 
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	char *str;
+
+// 	check_isnum(*str);
+// 	return (0);
+// }
+
 size_t	words_count(char **str)
 {
 	size_t	i;
@@ -155,6 +229,16 @@ size_t	words_count(char **str)
 		i++;
 	return (i);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_stack *stack;
+// 	size_t len;
+// 	cahr **str;
+
+// 	words_count(**str);
+// 	return (0);
+// }
 
 char	**check_argv(int argc, char **argv)
 {
@@ -170,6 +254,8 @@ char	**check_argv(int argc, char **argv)
 	{
 		i = 0;
 		str = split(argv[1]);
+		if (!str)
+			exit(1);
 	}
 	else
 	{
@@ -208,33 +294,34 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	str = check_argv(argc, argv);
-	input_stack(&stack_a, argc);
-	free_splited(str, argc);
-	coordinate_compression(stack_a);
-	stack_sort(&stack_a, &stack_b);
+	// input_stack(&stack_a, argc);
+	// free_splited(str, argc);
+	// coordinate_compression(stack_a);
+	// stack_sort(&stack_a, &stack_b);
 
-						if (is_sorted() != true)
-						{
-							if (argc != 2)
-							{
-								if (argc != 3)
-								{
-									if (!(argc <= 5))
-									{
-										radix_sort();
-										free(stack_a);
-									}
-								}
-							}
-					}
-	write(1, "error", 6);
-	if (argc == 2)
-	{
-		free(splited);
-	}
-	exit (1);
+	// 					if (is_sorted() != true)
+	// 					{
+	// 						if (argc != 2)
+	// 						{
+	// 							if (argc != 3)
+	// 							{
+	// 								if (!(argc <= 5))
+	// 								{
+	// 									radix_sort();
+	// 									free(stack_a);
+	// 								}
+	// 							}
+	// 						}
+	// 				}
+	// write(1, "error", 6);
+	// if (argc == 2)
+	// {
+	// 	free(splited);
+	// }
+	// exit (1);
 	return (0);
 }
+
 
 //sort
 //free(stack_a)
@@ -254,8 +341,3 @@ int main(int argc, char **argv)
 // 	return 0;
 // }
 
-int main(void)
-{
-	
-	return (0);
-}

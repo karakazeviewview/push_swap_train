@@ -1,23 +1,23 @@
-#include "libft.h"
-//#include <libc.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:09:35 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:09:36 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
 		i++;
 	return (i);
 }
-
-/*
-int main(void)
-{
-	char str1[] = "";
-	char str2[] = "world";
-	printf("%lu\n", ft_strlen(str1));
-	printf("%lu\n", ft_strlen(str2));
-	return (0);
-}
-*/

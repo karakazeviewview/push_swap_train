@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:18:09 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:18:10 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -5,13 +17,14 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
-typedef struct s_stadk
+typedef struct s_stack
 {
 	int num;
 	long index;
 	struct s_stack *next;
 	struct s_stack *previous;
 } t_stack;
+
 t_stack *ft_lstnew(int num);
 void ft_lstadd_front(t_stack **lst, t_stack *new);
 int ft_lstsize(t_stack *lst);

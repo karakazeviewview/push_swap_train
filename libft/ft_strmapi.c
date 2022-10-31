@@ -1,15 +1,25 @@
-//#include <libc.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:09:42 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:09:43 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char *str;
-	size_t i;
+	char	*str;
+	size_t	i;
 
 	if (s == NULL || f == NULL)
 		return (NULL);
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	//str = (char *)malloc(sizeof(char) * (strlen(s) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
@@ -21,24 +31,3 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
-char ft_plusone(unsigned int i, char c)
-{
-	return (1 + c);
-}
-
-char ft_plusi(unsigned int i, char c)
-{
-	return (i + c);
-}
-
-/*
-int main(void)
-{
-	printf("%s\n", ft_strmapi("abcdefg", ft_plusone));
-	printf("%s\n", ft_strmapi("abcdefg", ft_plusi));
-	printf("%s\n", ft_strmapi("abcdefg", NULL));
-	printf("%s\n", ft_strmapi("", ft_plusi));
-	return (0);
-}
-*/

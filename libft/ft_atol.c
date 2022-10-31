@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:06:01 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:06:02 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int ft_check_over(int sign, long ans, char c)
+static int	ft_check_over(int sign, long ans, char c)
 {
-	long tmp;
+	long	tmp;
 
 	tmp = LONG_MAX / 10;
 	if (sign == 1)
@@ -12,10 +24,10 @@ static int ft_check_over(int sign, long ans, char c)
 	return (0);
 }
 
-long ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
-	int sign;
-	long total;
+	int		sign;
+	long	total;
 
 	sign = 1;
 	total = 0;
@@ -23,10 +35,10 @@ long ft_atol(const char *str)
 		|| *str == '\f' || *str == '\r' || *str == ' ')
 		str++;
 	if (*str == '-')
-		sign = sign * (-1);
+		sign *= -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	while ('0' <= *str && *str <= '0')
+	while ('0' <= *str && *str <= '9')
 	{
 		if (sign == 1 && ft_check_over(sign, total, *str))
 			return (LONG_MAX);
@@ -35,6 +47,6 @@ long ft_atol(const char *str)
 		total = total * 10 + *str - '0';
 		str++;
 	}
-	total = total * sign;
+	total *= sign;
 	return (total);
 }

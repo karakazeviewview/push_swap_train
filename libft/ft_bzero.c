@@ -1,21 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:06:06 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:06:07 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
-
-/*
-int main(void)
-{
-	char str[] = "012345678901234567890123456789";
-	ft_bzero(str, 5);
-	int i = 0;
-	while (i < 10)
-	{
-		printf("%c\n", str[i]);
-		i++;
-	}
-	return (0);
-}
-*/

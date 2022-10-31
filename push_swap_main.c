@@ -1,17 +1,167 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_main.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 02:17:55 by mmatsuo           #+#    #+#             */
+/*   Updated: 2022/11/01 02:17:56 by mmatsuo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <libc.h>
 #include <stdbool.h>
-#include "libft/libft.h"
+#include "libft/include/libft.h"
 #include "push_swap.h"
 
-typedef struct s_stack
-{
-	int				num;
-	long			index;
-	struct s_stack	*next;
-	struct s_stack	*previous;
-}	t_stack;
+void	free_splited(char **str, int argc);
+bool	is_sorted(t_stack *stack);
+void	three_sort(t_stack **stack);
 
-void	error_input_stack(t_stack *stack, size_t len)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (1)
+	{
+		if (is_sorted(*stack_a))
+			break ;
+		j = 0;
+		while (j < len)
+		{
+			if (!(((*stack_a)->index >> i) & 1))
+				pb(stack_a, stack_b);
+			else
+				ra(stack_a);
+			j++;
+		}
+		while (j != 0)
+		{
+			pa(stack_a, stack_b);
+			j--;
+		}
+		// printf("%p\n", stack_b);
+		i++;
+	}
+	return ;
+}
+
+void	five_sort(t_stack **stack_a, t_stack **stack_b, size_t len)
+{
+	long	i;
+
+	i = 0;
+	while (i < (long)(len - 3))
+	{
+		if ((*stack_a)->index == i)
+		{
+			pb(stack_a, stack_b);
+			i++;
+		}
+		else if ((*stack_a)->next->index == i || (*stack_a)->next->next->index ==i)
+			ra(stack_a);
+		else
+			rra(stack_a);
+	}
+	three_sort(stack_a);
+	pa(stack_a, stack_b);
+	if (len == 5)
+		pa(stack_a, stack_b);
+	return ;
+}
+
+void	three_sort(t_stack **stack)
+{
+	// if ((*stack)->index < (*stack)->next->index && (*stack)->next->index > (*stack)->next->next->index && )
+	// {
+	// 	rra(stack);
+	// 	sa(stack);
+	// }
+	// else if ((*stack)->index > (*stack)->next->index && (*stack)->next->index < (*stack)->next->next->index)
+	// 	sa(stack);
+	// else if ((*stack)->index < (*stack)->next->index && (*stack)->next->index > (*stack)->next->next->index && (*stack)->index > (*stack)->next->next->index)
+	// 	rra(stack);
+	// else if ((*stack)->index > (*stack)->next->index && (*stack)->next->index < (*stack)->next->next->index)
+	// {
+	// 	rra(stack);
+	// 	rra(stack);
+	// }
+	// else if ((*stack)->index > (*stack)->next->index && (*stack)->next->index > (*stack)->next->next->index)
+	// {
+	// 	sa(stack);
+	// 	rra(stack);
+	// }
+	while (1)
+	{
+		if (is_sorted(*stack))
+			break ;	
+		if ((*stack)->index < (*stack)->next->next->index)
+			sa(stack);
+		else
+			ra(stack);
+	}
+	return ;
+	
+}
+/*
+0 1 2
+0 2 1
+1 0 2
+1 2 0
+2 0 1
+2 1 0
+*/
+
+
+
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	 *tmp;
+
+	while (stack)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
+	return ;
+}
+
+bool	is_sorted(t_stack *stack)
+{
+	if (!stack)
+		return (false);
+	while (stack->next)
+	{
+		if (stack->index > stack->next->index)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
+
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+{
+	size_t	len;
+
+	if (is_sorted(*stack_a))
+		return ;
+	len = ft_lstsize(*stack_a);
+	if (len == 2)
+		sa(stack_a);
+	else if (len == 3)
+		three_sort(stack_a);
+	else if (len <= 5)
+		five_sort(stack_a, stack_b, len);
+	else
+		radix_sort(stack_a, stack_b, len);
+}
+
+void	error_input_stack(t_stack *stack, size_t len, char **str, int argc)
 {
 	size_t	i;
 	t_stack	*tmp;
@@ -22,19 +172,12 @@ void	error_input_stack(t_stack *stack, size_t len)
 		tmp = stack->next;
 		free(stack);
 		stack = tmp;
+		i++;
 	}
-	return ;
+	free_splited(str, argc);
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
 }
-
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-
-// 	error_input_stack(*stack, len);
-// 	return (0);
-// }
-
 
 void	input_stack(t_stack **stack, char **str, int argc)
 {
@@ -48,23 +191,13 @@ void	input_stack(t_stack **stack, char **str, int argc)
 	{
 		new = ft_lstnew(ft_atoi(str[i]));
 		if (!new)
-			error_input_stack(stack, i);
+			error_input_stack(*stack, i, str, argc);
 		ft_lstadd_back(stack, new);
 		i++;
 	}
+	free_splited(str, argc);
 	return ;
 }
-
-// int main(int argc, char **argv)
-// {
-// 	t_stack **stack;
-// 	char **str;
-
-// 	t_stack *stack;
-// 	size_t len;
-// 	input_stack(**stack, **str, argc);
-// 	return (0);
-// }
 
 void	coordinate_compression(t_stack *stack)
 {
@@ -85,7 +218,7 @@ void	coordinate_compression(t_stack *stack)
 			if (tmp->num <= min && tmp->index == -1)
 			{
 				stack_min = tmp;
-				min = stack->num;
+				min = tmp->num;
 			}
 			tmp = tmp->next;
 		}
@@ -94,59 +227,32 @@ void	coordinate_compression(t_stack *stack)
 	}
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-
-// 	coordinate_compression(t_stack *stack);
-// 	return (0);
-// }
-
 void	free_splited(char **str, int argc)
 {
+	size_t	i;
+
+	i = 0;
 	if (argc == 2)
 	{
-		while (str && *str)
+		while (str && str[i])
 		{
-			free(*str);
-			*str++;
+			free(str[i]);
+			i++;
 		}
 		free(str);
 	}
 	return ;
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	char **str;
-
-// 	free_splited(**str, argc);
-// 	return (0);
-// }
-
-
 void	error_argv(char **str, long *num, int argc)
 {
 	free_splited(str, argc);
 	free(num);
-	ft_putchar_fd("Error\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	long *num;
-// 	char **str;
-
-// 	error_argv(**str, *num, argc);
-// 	return (0);
-// }
-
-bool	check_dup(long *num, size_t len)
+bool	check_isdup(long *num, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -166,32 +272,12 @@ bool	check_dup(long *num, size_t len)
 	return (false);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	long *num;
-
-// 	check_dup(*num, len);
-// 	return (0);
-// }
-
 bool	check_isover_int(long num)
 {
 	if (num < INT_MIN || INT_MAX < num)
 		return (true);
 	return (false);
 }
-
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	lont num;
-
-// 	check_isover_int(num);
-// 	return (0);
-// }
 
 bool	check_isnum(char *str)
 {
@@ -201,22 +287,12 @@ bool	check_isnum(char *str)
 		str++;
 	while (*str)
 	{
-		if (!(*str <= '0' && *str <= '9'))
+		if (*str < '0' || '9' < *str)
 			return (false);
 		str++;
 	}
 	return (true);
 }
-
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	char *str;
-
-// 	check_isnum(*str);
-// 	return (0);
-// }
 
 size_t	words_count(char **str)
 {
@@ -230,16 +306,6 @@ size_t	words_count(char **str)
 	return (i);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	t_stack *stack;
-// 	size_t len;
-// 	cahr **str;
-
-// 	words_count(**str);
-// 	return (0);
-// }
-
 char	**check_argv(int argc, char **argv)
 {
 	char	**str;
@@ -252,18 +318,20 @@ char	**check_argv(int argc, char **argv)
 		exit (1);
 	else if (argc == 2)
 	{
+		if (argv[1][0] == '\0')
+			error_argv(NULL, NULL, argc);
 		i = 0;
-		str = split(argv[1]);
+		str = ft_split(argv[1], ' ');
 		if (!str)
-			exit(1);
+			error_argv(NULL, NULL, argc);
 	}
 	else
 	{
 		i = 1;
 		str = argv;
 	}
-	len = words_count(str - i);
-	num = malloc(sizeof(long)  * len);
+	len = words_count(str) - i;
+	num = malloc(sizeof(long) * len);
 	if (!num)
 	{
 		free_splited(str, argc);
@@ -274,7 +342,7 @@ char	**check_argv(int argc, char **argv)
 	while (str[i] != NULL)
 	{
 		num[j] = ft_atol(str[i]);
-		if (!check_isnum(str[i]) && check_isover_int(num[j]))
+		if (!check_isnum(str[i]) || check_isover_int(num[j]))
 			error_argv(str, num, argc);
 		i++;
 		j++;
@@ -294,35 +362,23 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	str = check_argv(argc, argv);
-	// input_stack(&stack_a, argc);
-	// free_splited(str, argc);
-	// coordinate_compression(stack_a);
-	// stack_sort(&stack_a, &stack_b);
-
-	// 					if (is_sorted() != true)
-	// 					{
-	// 						if (argc != 2)
-	// 						{
-	// 							if (argc != 3)
-	// 							{
-	// 								if (!(argc <= 5))
-	// 								{
-	// 									radix_sort();
-	// 									free(stack_a);
-	// 								}
-	// 							}
-	// 						}
-	// 				}
-	// write(1, "error", 6);
-	// if (argc == 2)
-	// {
-	// 	free(splited);
-	// }
-	// exit (1);
+	input_stack(&stack_a, str, argc);
+	coordinate_compression(stack_a);
+	sort_stack(&stack_a, &stack_b);
+	free_stack(stack_a);
 	return (0);
 }
 
-
+	// while (stack_a)
+	// {
+	// 	printf("num\t\t= %d\n", stack_a->num);
+	// 	printf("index\t\t= %ld\n", stack_a->index);
+	// 	printf("previous\t= %p\n", stack_a->previous);
+	// 	printf("ptr\t\t= %p\n", stack_a);
+	// 	printf("next\t\t= %p\n", stack_a->next);
+	// 	stack_a = stack_a->next;
+	// }
+	
 //sort
 //free(stack_a)
 //exit(0)
@@ -341,3 +397,6 @@ int main(int argc, char **argv)
 // 	return 0;
 // }
 
+// ok check_isnum
+// ok check_isover_int
+// ok check_isdup

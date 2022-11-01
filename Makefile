@@ -6,47 +6,64 @@
 #    By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 02:17:36 by mmatsuo           #+#    #+#              #
-#    Updated: 2022/11/01 02:17:37 by mmatsuo          ###   ########.fr        #
+#    Updated: 2022/11/01 19:19:54 by mmatsuo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = push_swap.c
-				ft_lstadd_back.c \
-				ft_lstadd_front.c \
-				ft_lstclear.c			\
-				ft_lstdelone.c		\
-				ft_lstfirst.c			\
-				ft_lstiter.c			\
-				ft_lstlast.c			\
-				ft_lstmap.c				\
-				ft_lstnew.c				\
-				ft_lstsize.c			\
-				push.c						\
-				reverse_rotate.c	\
-				rotate.c					\
-				swap.c						
+NAME	=	push_swap
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+INCLUDE	=	-I include
 
-OBJS	= $(SRCS:.c=.o)
+LIST_SRCS	=	src/list/ft_lstadd_back.c	\
+				src/list/ft_lstadd_front.c	\
+				src/list/ft_lstclear.c		\
+				src/list/ft_lstdelone.c		\
+				src/list/ft_lstfirst.c		\
+				src/list/ft_lstiter.c		\
+				src/list/ft_lstlast.c		\
+				src/list/ft_lstmap.c		\
+				src/list/ft_lstnew.c		\
+				src/list/ft_lstsize.c
 
-CC		= cc
+OP_SRCS		=	src/op/push.c				\
+				src/op/reverse_rotate.c		\
+				src/op/rotate.c				\
+				src/op/swap.c
 
-CFLAGS	= -Wall -Wextra -Werror
+SORT_SRCS	=	src/check_func.c				\
+				src/coordinate_compression.c	\
+				src/error.c						\
+				src/free_func.c					\
+				src/input_to_stack.c			\
+				src/main.c						\
+				src/radix_sort.c				\
+				src/sort_stack.c				\
+				src/sort_utils.c				\
+				src/words_count.c
 
-NAME	= push_swap
+SRCS		=	$(LIST_SRCS) $(OP_SRCS) $(SORT_SRCS)
+OBJS		=	$(SRCS:%.c=$(OBJDIR)/%.o)
+LIBFTDIR	=	libft
+OBJDIR		=	objs
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	make -C ft_printf
-	make -C libft
-	$(CC) $(CFLAGS) $(OBJS) printf/libftprintf.a libft/libft.a -o $(NAME)
+			@make -C $(LIBFTDIR)
+			$(CC) $(CFLAGS) $(OBJS) -L$(LIBFTDIR) -lft -o $(NAME)
+
+$(OBJDIR)/%.o:%.c
+			@mkdir -p $(@D)
+			$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE)
 
 clean:
-	make fclean -C printf
-	make fclean -C libft
-	rm -f (OBJS)
+		rm -rf $(OBJDIR)
+		make fclean -C libft
 
 fclean:	clean
-	rm -f $(NAME)
+		rm -f $(NAME)
+
+re:		fclean all
 
 .PHONY: all clean fclean re

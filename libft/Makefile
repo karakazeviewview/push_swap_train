@@ -6,7 +6,7 @@
 #    By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 02:11:24 by mmatsuo           #+#    #+#              #
-#    Updated: 2022/11/01 02:11:25 by mmatsuo          ###   ########.fr        #
+#    Updated: 2022/11/01 18:39:26 by mmatsuo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,15 +81,6 @@ re:				fclean all
 
 bonus:			all
 
-test:			
-			echo $@
-			echo $(@D)
-			echo $(@F)
-
-test2:
-			echo $<
-			echo $(<D)
-			echo $(<F)
 .PHONY:			all clean fclean re bonus
 
 # ifdef WITH_BONUS

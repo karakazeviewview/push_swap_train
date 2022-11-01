@@ -6,7 +6,7 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:14:24 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 18:34:34 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 19:17:02 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void			rr(t_stack **stack_a, t_stack **stack_b);
 void			rra(t_stack **lst);
 void			rrb(t_stack **lst);
 void			rrr(t_stack **stack_a, t_stack **stack_b);
-static bool		check_isdup(long *num, size_t len);
-static bool		check_isover_int(long num);
-static bool		check_isnum(char *str);
 size_t			words_count(char **str);
 char			**check_argv(int argc, char **argv);
 void			coordinate_compression(t_stack *stack);

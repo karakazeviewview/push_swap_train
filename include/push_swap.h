@@ -6,7 +6,7 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 02:14:24 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 18:18:37 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:34:34 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -55,7 +53,6 @@ static bool		check_isover_int(long num);
 static bool		check_isnum(char *str);
 size_t			words_count(char **str);
 char			**check_argv(int argc, char **argv);
-void			check_func(int argc, char **str, size_t len, size_t i);
 void			coordinate_compression(t_stack *stack);
 void			error_input_stack(t_stack *stack, size_t len, char **str, \
 				int argc);
@@ -63,12 +60,8 @@ void			error_argv(char **str, long *num, int argc);
 void			free_stack(t_stack *stack);
 void			free_splited(char **str, int argc);
 void			input_stack(t_stack **stack, char **str, int argc);
-int				main(int argc, char **argv);
 void			radix_sort(t_stack **stack_a, t_stack **stack_b, size_t len);
-static void		three_sort(t_stack **stack);
-static void		five_sort(t_stack **stack_a, t_stack **stack_b, size_t len);
 void			sort_stack(t_stack **stack_a, t_stack **stack_b);
-
 bool			is_sorted(t_stack *stack);
 
 #endif

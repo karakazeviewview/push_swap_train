@@ -6,7 +6,7 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 18:07:20 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 18:16:23 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:27:27 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static bool	check_isdup(long *num, size_t len)
 	return (false);
 }
 
-void	check_func(int argc, char **str, size_t len, size_t i)
+static void	check_func(int argc, char **str, size_t len, size_t i)
 {
 	long	*num;
 	size_t	j;

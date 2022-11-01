@@ -6,7 +6,7 @@
 /*   By: mmatsuo <mmatsuo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 05:36:49 by mmatsuo           #+#    #+#             */
-/*   Updated: 2022/11/01 06:45:48 by mmatsuo          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:22:21 by mmatsuo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,4 @@ static bool	check_isnum(char *str)
 		str++;
 	}
 	return (true);
-}
-
-static size_t	words_count(char **str)
-{
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (*str++)
-		i++;
-	return (i);
 }
